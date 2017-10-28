@@ -13,7 +13,7 @@ namespace CompleteProject
         void Start ()
         {
             // Call the Spawn function after a delay of the spawnTime and then continue to call after the same amount of time.
-            InvokeRepeating ("Spawn", spawnTime, spawnTime);
+            InvokeRepeating ("Spawn", spawnTime, spawnTime);//重複呼叫函式(方法名稱,第一次觸發時間,間隔時間)
         }
 
 
@@ -27,7 +27,7 @@ namespace CompleteProject
             }
 
             // Find a random index between zero and one less than the number of spawn points.
-            int spawnPointIndex = Random.Range (0, spawnPoints.Length);
+            int spawnPointIndex = Random.Range (0, spawnPoints.Length);//隨機產生index
 
             // Create an instance of the enemy prefab at the randomly selected spawn point's position and rotation.
             Instantiate (enemy, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
