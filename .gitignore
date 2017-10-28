@@ -2,3 +2,5 @@
 *.sln
 Nightmare_1014/Library/
 Nightmare_1014/Temp/
+*.exr
+*.meta

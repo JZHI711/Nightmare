@@ -2,8 +2,8 @@
 
 public class PlayerShooting : MonoBehaviour
 {
-    public int damagePerShot = 20;
-    public float timeBetweenBullets = 0.15f;
+    public int damagePerShot = 20; //給敵人的傷害
+    public float timeBetweenBullets = 0.15f; //每0.15秒觸發一次
     public float range = 100f;
 
 
@@ -15,7 +15,7 @@ public class PlayerShooting : MonoBehaviour
     LineRenderer gunLine;
     AudioSource gunAudio;
     Light gunLight;
-    float effectsDisplayTime = 0.2f;
+    float effectsDisplayTime = 0.2f; //特效播放的間隔時間
 
 
     void Awake ()
@@ -30,7 +30,7 @@ public class PlayerShooting : MonoBehaviour
 
     void Update ()
     {
-        timer += Time.deltaTime;
+        timer += Time.deltaTime;//60fps frame per sec ,1/60=0.016666...
 
 		if(Input.GetButton ("Fire1") && timer >= timeBetweenBullets && Time.timeScale != 0)
         {
@@ -63,7 +63,7 @@ public class PlayerShooting : MonoBehaviour
         gunParticles.Play ();
 
         gunLine.enabled = true;
-        gunLine.SetPosition (0, transform.position);
+        gunLine.SetPosition (0, transform.position);//射線(起始點,位置)
 
         shootRay.origin = transform.position;
         shootRay.direction = transform.forward;
