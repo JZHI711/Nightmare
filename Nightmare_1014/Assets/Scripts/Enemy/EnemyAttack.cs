@@ -33,11 +33,11 @@ public class EnemyAttack : MonoBehaviour
     }
 
 
-    void OnTriggerExit (Collider other)
+    void OnTriggerExit (Collider other)//當敵人的碰撞器離開角色
     {
         if(other.gameObject == player)
         {
-            playerInRange = false;
+            playerInRange = false;//關閉攻擊模式
         }
     }
 
