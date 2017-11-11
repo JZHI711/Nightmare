@@ -228,8 +228,8 @@ RectTransform:
   m_Father: {fileID: 557813695}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 15, y: 0}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 1, y: 0.5}
@@ -383,7 +383,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1502,8 +1502,8 @@ RectTransform:
   m_Father: {fileID: 1938865804}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 15, y: 0}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 1, y: 0.5}
@@ -2586,6 +2586,8 @@ GameObject:
   - component: {fileID: 1258658742}
   - component: {fileID: 1258658741}
   - component: {fileID: 1258658745}
+  - component: {fileID: 1258658747}
+  - component: {fileID: 1258658746}
   m_Layer: 5
   m_Name: MenuCanvas
   m_TagString: Untagged
@@ -2682,6 +2684,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efe9dcd8f5a7c714192a33bc781e496a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1258658746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1258658740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d201f4a9ee426d409eccb38f7ace4d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  masterMixer: {fileID: 0}
+--- !u!114 &1258658747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1258658740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a4428171d2972b40bd41f6fb6b3e813, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  paused: {fileID: 245907093111508526, guid: 1e3e484c2b692754695730e7d616092a, type: 2}
+  unPaused: {fileID: 245559434381703714, guid: 1e3e484c2b692754695730e7d616092a, type: 2}
 --- !u!1 &1259793144
 GameObject:
   m_ObjectHideFlags: 0
@@ -2741,7 +2768,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2788,7 +2815,7 @@ GameObject:
   - component: {fileID: 1296031348}
   - component: {fileID: 1296031349}
   m_Layer: 5
-  m_Name: MenuSlider
+  m_Name: MusicSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2854,13 +2881,24 @@ MonoBehaviour:
   m_FillRect: {fileID: 2029782724}
   m_HandleRect: {fileID: 655083446}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -80
+  m_MaxValue: -10
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: -10
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1258658746}
+        m_MethodName: SetMusicLv1
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &1297397915
@@ -3808,7 +3846,8 @@ AudioSource:
   m_GameObject: {fileID: 1634587984}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243659658941174824, guid: 1e3e484c2b692754695730e7d616092a,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 4fff99673a41e24439d527ad0bd6b569, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.1
@@ -3923,7 +3962,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 121213762}
-  enemy: {fileID: 1039393085023854, guid: 1cd9ec40ff6f0ef47a14f92a5702f1c9, type: 2}
+  enemy: {fileID: 1039393085023854, guid: adea42a3db6b4f540bafcf82558cda5a, type: 2}
   spawnTime: 3
   spawnPoints:
   - {fileID: 1487585797}
@@ -3939,7 +3978,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 121213762}
-  enemy: {fileID: 1341977712301132, guid: f5ebe18eae7972445ad1b54a732668f5, type: 2}
+  enemy: {fileID: 1117997014903616, guid: 6b0f0aa71ba50df43b999568cf62c5a9, type: 2}
   spawnTime: 3
   spawnPoints:
   - {fileID: 1259793145}
@@ -3955,7 +3994,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 121213762}
-  enemy: {fileID: 1117997014903616, guid: 067a787c0449cd24d8cefd4033fb9c6b, type: 2}
+  enemy: {fileID: 1341977712301132, guid: f5045509c36914a4d8c33e673c9fd683, type: 2}
   spawnTime: 3
   spawnPoints:
   - {fileID: 545432697}
@@ -4273,6 +4312,12 @@ Prefab:
       propertyPath: damageImage
       value: 
       objectReference: {fileID: 943357262}
+    - target: {fileID: 82877674615913320, guid: 774acf237890559469898491c93050d4,
+        type: 2}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 243219649418224202, guid: 7cce07cf68e0c064294a53e4b85c852d,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 774acf237890559469898491c93050d4, type: 2}
   m_IsPrefabParent: 0
@@ -4517,7 +4562,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1258658745}
+      - m_Target: {fileID: 1258658747}
         m_MethodName: Pause
         m_Mode: 1
         m_Arguments:
@@ -4847,7 +4892,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!225 &2020728895
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -5207,13 +5252,24 @@ MonoBehaviour:
   m_FillRect: {fileID: 1730687973}
   m_HandleRect: {fileID: 294503313}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -80
+  m_MaxValue: 0
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1258658746}
+        m_MethodName: SetfxLv1
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &2101816511

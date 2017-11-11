@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class MenuManager : MonoBehaviour {
     private Canvas canvas;
+    public AudioMixerSnapshot paused;
+    public AudioMixerSnapshot unPaused;
 	// Use this for initialization
 	void Start () {
         canvas = GetComponent<Canvas>();
@@ -19,7 +22,9 @@ public class MenuManager : MonoBehaviour {
         }
 	}
     public void Pause() {
-        Time.timeScale = Time.timeScale == 0 ? 1:0 ;//暫停
+        Time.timeScale = Time.timeScale == 0 ? 1:0 ;
+        LowPass();
+        //暫停
         /*等同於
         if(Time.timeScale==0)
         {
@@ -31,6 +36,17 @@ public class MenuManager : MonoBehaviour {
         }*/
 
            }
+    private void LowPass() {    //切換時間
+        if (Time.timeScale == 0)
+        {
+            paused.TransitionTo(0.01f);
+        }
+        else
+        {
+            unPaused.TransitionTo(0.01f);
+        }
+    }
+
     public void Quit()
     {
 #if UNITY_EDITOR
